@@ -12,7 +12,7 @@ namespace RhubarbGeekNzInprocServer32
     {
         static void Main(string[] args)
         {
-            IHelloWorld helloWorld = Activator.CreateInstance(Type.GetTypeFromProgID("RhubarbGeekNz.InprocServer32", true)) as IHelloWorld;
+            IHelloWorld helloWorld = new CHelloWorld();
 
             foreach (int hint in args.Length == 0 ? new int[] { 1, 2, 3, 4, 5 } : args.Select(t => Int32.Parse(t)).ToArray())
             {
