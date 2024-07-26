@@ -13,46 +13,36 @@ int main(int argc, char** argv)
 
 	if (SUCCEEDED(hr))
 	{
-		BSTR app = SysAllocString(L"RhubarbGeekNz.InprocServer32");
-		CLSID clsid;
+		IHelloWorld* helloWorld = NULL;
 
-		hr = CLSIDFromProgID(app, &clsid);
-
-		SysFreeString(app);
+		hr = CoCreateInstance(CLSID_CHelloWorld, NULL, CLSCTX_INPROC_SERVER, IID_IHelloWorld, (void**)&helloWorld);
 
 		if (SUCCEEDED(hr))
 		{
-			IHelloWorld* helloWorld = NULL;
+			BSTR result = NULL;
+			int hint = argc > 1 ? atoi(argv[1]) : 1;
 
-			hr = CoCreateInstance(clsid, NULL, CLSCTX_INPROC_SERVER, IID_IHelloWorld, (void**)&helloWorld);
+			hr = helloWorld->GetMessage(hint, &result);
 
 			if (SUCCEEDED(hr))
 			{
-				BSTR result = NULL;
-				int hint = argc > 1 ? atoi(argv[1]) : 1;
+				printf("%S\n", result);
 
-				hr = helloWorld->GetMessage(hint, &result);
-
-				if (SUCCEEDED(hr))
+				if (result)
 				{
-					printf("%S\n", result);
-
-					if (result)
-					{
-						SysFreeString(result);
-					}
+					SysFreeString(result);
 				}
-
-				helloWorld->Release();
 			}
 
-			if (FAILED(hr))
-			{
-				fprintf(stderr, "0x%lx\n", (long)hr);
-			}
+			helloWorld->Release();
 		}
 
 		CoUninitialize();
+	}
+
+	if (FAILED(hr))
+	{
+		fprintf(stderr, "0x%lx\n", (long)hr);
 	}
 
 	return FAILED(hr);
