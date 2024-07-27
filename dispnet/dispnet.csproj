@@ -5,19 +5,7 @@
     <TargetFrameworks>net481;net6.0-windows</TargetFrameworks>
   </PropertyGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net481' ">
-    <COMReference Include="RhubarbGeekNzInprocServer32">
-      <WrapperTool>tlbimp</WrapperTool>
-      <VersionMinor>0</VersionMinor>
-      <VersionMajor>0</VersionMajor>
-      <Guid>6d87add0-284b-4414-b5c3-9800e19a234e</Guid>
-      <Lcid>0</Lcid>
-      <Isolated>false</Isolated>
-      <EmbedInteropTypes>true</EmbedInteropTypes>
-    </COMReference>
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0-windows' ">
+  <ItemGroup>
     <PackageReference Include="rhubarb-geek-nz.InprocServer32" Version="1.0.2" />
   </ItemGroup>
 
