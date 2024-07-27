@@ -27,7 +27,7 @@
   <Fragment>
     <ComponentGroup Id="ProductComponents">
       <Component Id="cmp49644F99A8DC013BD2FA39270E26C76C" Guid="*" Directory="INSTALLDIRBIN" Win64="$(env.PRODUCTWIN64)">
-        <File Id="fil206829A74DFF7880F64BE9D5C35CFF80" KeyPath="yes" Source="..\bin\$(env.PRODUCTARCH)\displib.dll">
+        <File Id="fil206829A74DFF7880F64BE9D5C35CFF80" KeyPath="yes" Source="..\bin\$(env.PRODUCTARCH)\RhubarbGeekNzInprocServer32.dll">
           <TypeLib Id="{6D87ADD0-284B-4414-B5C3-9800E19A234E}" Description="RhubarbGeekNzInprocServer32" HelpDirectory="INSTALLDIR" MajorVersion="0" MinorVersion="0" Language="0">
             <Interface Id="{B45D5AF8-F3B2-4895-BBC8-02610E9E50CC}" Name="IHelloWorld" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
           </TypeLib>

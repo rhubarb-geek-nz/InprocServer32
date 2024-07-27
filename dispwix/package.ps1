@@ -16,7 +16,7 @@ trap
 
 foreach ($ARCH in $Architectures)
 {
-	$VERSION=(Get-Item "..\bin\$ARCH\displib.dll").VersionInfo.ProductVersion
+	$VERSION=(Get-Item "..\bin\$ARCH\RhubarbGeekNzInprocServer32.dll").VersionInfo.ProductVersion
 
 	$env:PRODUCTVERSION = $VERSION
 	$env:PRODUCTARCH = $ARCH
@@ -56,7 +56,7 @@ foreach ($ARCH in $Architectures)
 		exit $LastExitCode
 	}
 
-	$MsiFilename = "displib-$VERSION-$ARCH.msi"
+	$MsiFilename = "rhubarb-geek-nz.InprocServer32-$VERSION-$ARCH.msi"
 
 	& "${env:WIX}bin\light.exe" -nologo -cultures:null -out $MsiFilename 'displib.wixobj'
 
@@ -66,7 +66,7 @@ foreach ($ARCH in $Architectures)
 	}
 
 	Remove-Item 'displib.wix*'
-	Remove-Item 'displib*.wixpdb'
+	Remove-Item 'rhubarb-geek-nz.InprocServer32-*.wixpdb'
 
 	if ($CertificateThumbprint)
 	{
