@@ -7,6 +7,8 @@ param(
 	$Hint = @(1, 2, 3, 4, 5)
 )
 
+$ErrorActionPreference = [System.Management.Automation.ActionPreference]::Stop
+
 $helloWorld = New-Object -ComObject $ProgID
 
 foreach ($h in $hint)

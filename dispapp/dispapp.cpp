@@ -19,19 +19,29 @@ int main(int argc, char** argv)
 
 		if (SUCCEEDED(hr))
 		{
-			BSTR result = NULL;
-			int hint = argc > 1 ? atoi(argv[1]) : 1;
+			int hint = 1;
 
-			hr = helloWorld->GetMessage(hint, &result);
-
-			if (SUCCEEDED(hr))
+			while (hint < 6)
 			{
-				printf("%S\n", result);
+				BSTR result = NULL;
 
-				if (result)
+				hr = helloWorld->GetMessage(hint, &result);
+
+				if (SUCCEEDED(hr))
 				{
-					SysFreeString(result);
+					printf("%S\n", result);
+
+					if (result)
+					{
+						SysFreeString(result);
+					}
 				}
+				else
+				{
+					break;
+				}
+
+				hint++;
 			}
 
 			helloWorld->Release();
